@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "lib": ["ES2022"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+      "@nutrivedha/shared": ["./shared/src"],
+      "@nutrivedha/shared-types": ["./packages/shared-types/src"],
+      "@nutrivedha/shared-validation": ["./packages/shared-validation/src"],
+      "@nutrivedha/shared-config": ["./packages/shared-config/src"]
+    }
+  }
+}

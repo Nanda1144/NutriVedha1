@@ -1,0 +1,24 @@
+{
+  "name": "@nutrivedha/backend",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "gateway",
+    "shared",
+    "packages/*",
+    "services/*"
+  ],
+  "scripts": {
+    "build": "tsc -b tsconfig.base.json",
+    "dev:all": "concurrently \"npm run --prefix gateway dev\" \"npm run --prefix services/auth dev\" \"npm run --prefix services/user dev\" \"npm run --prefix services/ai dev\" \"npm run --prefix services/medical dev\" \"npm run --prefix services/telemedicine dev\" \"npm run --prefix services/fitness dev\" \"npm run --prefix services/marketplace dev\" \"npm run --prefix services/orders dev\" \"npm run --prefix services/notification dev\" \"npm run --prefix services/analytics dev\"",
+    "test": "jest",
+    "db:migrate": "prisma migrate dev --schema=../database/schema/schema.prisma",
+    "db:generate": "prisma generate --schema=../database/schema/schema.prisma"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "concurrently": "^9.0.0",
+    "prisma": "^6.0.0",
+    "typescript": "^5.6.0"
+  }
+}
