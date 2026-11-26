@@ -178,6 +178,19 @@ Every microservice is built as an independent, layered Node.js/TypeScript applic
 
 *Full specification available in [`docs/architecture/microservices-architecture.md`](docs/architecture/microservices-architecture.md).*
 
+### 4.1 Four-Member Parallel Backend Engineering Division
+
+To guarantee **100% zero-blocker parallel development**, the 10 microservices and API Gateway are divided across 4 backend developers based on domain cohesion, database table ownership, and non-blocking contract headers (`x-user-id`, `x-user-role`, `x-request-id`):
+
+| Team Member | Core Domain | Assigned Microservices | Port | Owned Database Tables | Parallel Execution Strategy |
+|---|---|---|---|---|---|
+| **Member 1** | **Identity, Security & Gateway** | 1. API Gateway<br/>2. Auth Service<br/>3. User Service | `8080`<br/>`3001`<br/>`3002` | `users`, `admin_accounts`, `roles`, `permissions`, `refresh_tokens`, `user_profiles`, `user_addresses`, `user_preferences` | Issues JWT; injects `x-user-id` downstream; sets up proxy routes for peers |
+| **Member 2** | **Clinical AI & HealthTech** | 1. AI Service<br/>2. Medical Service<br/>3. Telemedicine Service | `3003`<br/>`3005`<br/>`3006` | `ai_requests`, `diet_plans`, `saved_recipes`, `medical_reports`, `doctor_profiles`, `appointments` | Consumes `x-user-id` header; integrates Gemini API with offline fallback; AES-256-GCM cipher |
+| **Member 3** | **Commerce & Supply Chain** | 1. Marketplace Service<br/>2. Orders Service | `3007`<br/>`3008` | `product_categories`, `products`, `wishlists`, `carts`, `orders`, `order_items`, `payments`, `tracking_events` | ACID transactional checkout; 5-step milestone tracking; catalog CRUD |
+| **Member 4** | **Telemetry & Engagement** | 1. Fitness Service<br/>2. Notification Service<br/>3. Analytics & Audit Service | `3009`<br/>`3010`<br/>`3011` | `fitness_logs`, `notifications`, `audit_logs`, `activity_events`, `system_settings` | Immutable audit ledger; mass push broadcast dispatcher; service mesh health monitor |
+
+*Detailed per-module requirements, step-by-step guides, and merge protocols available in [`docs/task-management/team-backend-task-division.md`](docs/task-management/team-backend-task-division.md).*
+
 ---
 
 ## 5. Database Architecture & Entity Ownership
@@ -688,6 +701,7 @@ All architectural specifications, workflows, and operations manuals are indexed 
 | **Testing Strategy** | [`docs/testing/testing-strategy.md`](docs/testing/testing-strategy.md) | Multi-tier testing pyramid & CI/CD checks |
 | **Development Roadmap** | [`docs/checklists/development-roadmap.md`](docs/checklists/development-roadmap.md) | Phase 1 Gantt timeline & milestones |
 | **Task Management (WBS)** | [`docs/task-management/task-management.md`](docs/task-management/task-management.md) | Work breakdown structure with task IDs |
+| **Team Backend Tasks** | [`members-tasks.md`](members-tasks.md) | **4-Member parallel backend division, module specs & merge blueprint** |
 | **Phase Completion Checklist**| [`docs/checklists/phase-completion-checklist.md`](docs/checklists/phase-completion-checklist.md)| Definition of Done & quality acceptance |
 
 ---

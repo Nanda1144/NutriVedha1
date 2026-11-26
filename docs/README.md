@@ -2,6 +2,8 @@
 
 Welcome to the comprehensive technical documentation for **NutriVedha**.
 
+> This folder is the single source of truth for the project. For what each document is for and how an AI agent should use them, read the [Documentation Purpose & AI Agent Guide](AI-AGENT-GUIDE.md).
+
 ---
 
 ## 1. Documentation Index
@@ -39,8 +41,12 @@ Welcome to the comprehensive technical documentation for **NutriVedha**.
 - [User Feature Inventory](design-system/user-feature-inventory.md) — Exhaustive checklist of User module functionalities.
 - [Admin Feature Inventory](design-system/admin-feature-inventory.md) — Exhaustive checklist of Admin governance functionalities.
 
-### Testing & Roadmaps
+### Task Management
+- [Task Management](task-management/task-management.md) — Work breakdown structure (WBS) with task IDs, priorities, and acceptance criteria.
+- [Backend Feature Split for 3 Developers](task-management/backend-feature-split.md) — 26 features (16 user + 10 admin) divided into 3 non-overlapping ownership tracks with merge strategy.
+
+### AI Agent & Testing
+- [Documentation Purpose & AI Agent Guide](AI-AGENT-GUIDE.md) — Purpose of the docs folder, how docs help AI agents complete tasks, precedence rules and guardrails.
 - [Testing Strategy](testing/testing-strategy.md) — Unit, integration, and E2E testing pyramid.
 - [Development Roadmap](checklists/development-roadmap.md) — Phase 1 Gantt chart and milestone deliverables.
-- [Task Management](task-management/task-management.md) — Work breakdown structure (WBS) with task IDs, priorities, and acceptance criteria.
 - [Phase Completion Checklist](checklists/phase-completion-checklist.md) — Definition of Done (DoD) verification criteria.
